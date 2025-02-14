@@ -127,7 +127,7 @@ const ReferralModal: React.FC<ReferralModalProps> = ({ onClose }) => {
           {/* Referee Name */}
           <div className="mb-4">
             <label htmlFor="refereeName" className="block mb-1">
-              Friend's Name
+              Friend&apos;s Name
             </label>
             <input
               type="text"
