@@ -37,9 +37,9 @@ const ReferralModal: React.FC<ReferralModalProps> = ({ onClose }) => {
     } else if (!/\S+@\S+\.\S+/.test(formData.referrerEmail)) {
       newErrors.referrerEmail = 'Enter a valid email';
     }
-    if (!formData.refereeName.trim()) newErrors.refereeName = "Friend&apos;s name is required";
+    if (!formData.refereeName.trim()) newErrors.refereeName = "Friend's name is required";
     if (!formData.refereeEmail.trim()) {
-      newErrors.refereeEmail = "Friend&apos;s email is required";
+      newErrors.refereeEmail = "Friend's email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.refereeEmail)) {
       newErrors.refereeEmail = 'Enter a valid email';
     }
@@ -143,7 +143,7 @@ const ReferralModal: React.FC<ReferralModalProps> = ({ onClose }) => {
           {/* Referee Email */}
           <div className="mb-4">
             <label htmlFor="refereeEmail" className="block mb-1">
-              Friend's Email
+              Friend&apos;s Email
             </label>
             <input
               type="email"
