@@ -1,8 +1,7 @@
-// components/ReferralModal.tsx
 "use client";
 
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 type ReferralModalProps = {
   onClose: () => void;
@@ -16,6 +15,11 @@ type ReferralFormData = {
   courseName: string;
 };
 
+// Define the expected API error response type
+interface ApiErrorResponse {
+  message: string;
+}
+
 const ReferralModal: React.FC<ReferralModalProps> = ({ onClose }) => {
   const [formData, setFormData] = useState<ReferralFormData>({
     referrerName: '',
@@ -28,7 +32,7 @@ const ReferralModal: React.FC<ReferralModalProps> = ({ onClose }) => {
   const [submitting, setSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
-  // Validate required fields and basic email formatting.
+  // Rest of the validation code remains the same
   const validate = (): Partial<ReferralFormData> => {
     const newErrors: Partial<ReferralFormData> = {};
     if (!formData.referrerName.trim()) newErrors.referrerName = 'Your name is required';
@@ -61,22 +65,24 @@ const ReferralModal: React.FC<ReferralModalProps> = ({ onClose }) => {
     setErrors({});
     setSubmitting(true);
     try {
-      // Call the Express API (adjust the URL if needed)
       await axios.post('http://localhost:5001/api/referral', formData);
       setSuccessMessage('Referral submitted successfully!');
-      // Optionally, close the modal after a short delay
       setTimeout(() => {
         setSuccessMessage('');
         onClose();
       }, 2000);
-    } catch (error: any) {
+    } catch (error) {
       console.error(error);
-      setErrors({ form: error.response?.data?.message || 'An error occurred. Please try again.' });
+      const axiosError = error as AxiosError<ApiErrorResponse>;
+      setErrors({ 
+        form: axiosError.response?.data?.message || 'An error occurred. Please try again.' 
+      });
     } finally {
       setSubmitting(false);
     }
   };
 
+  // Rest of the component remains the same
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg w-11/12 md:w-1/2 p-6 relative">
@@ -92,6 +98,7 @@ const ReferralModal: React.FC<ReferralModalProps> = ({ onClose }) => {
         {errors.form && <div className="bg-red-200 text-red-800 p-2 mb-4">{errors.form}</div>}
 
         <form onSubmit={handleSubmit} noValidate>
+          {/* Form fields remain the same */}
           {/* Referrer Name */}
           <div className="mb-4">
             <label htmlFor="referrerName" className="block mb-1">
