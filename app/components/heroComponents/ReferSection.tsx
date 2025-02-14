@@ -12,7 +12,7 @@ const ReferHero = () => {
                     {/* Left Content */}
                     <div className="w-full md:w-1/2 z-10 pl-4">
                         <h1 className="text-4xl md:text-7xl font-bold text-gray-900 mb-6">
-                            Let's Learn<br />& Earn
+                            Let&apos;s Learn<br />& Earn
                         </h1>
                         <p className="text-3xl text-gray-800 mb-8">
                             Get a chance to win  <br /> up-to{' '}

@@ -1,5 +1,7 @@
 import React from 'react';
 import ReferButton from '../referbutton';
+import Image from 'next/image';
+import { Fullscreen } from 'lucide-react';
 
 const ReferralFlow = () => {
     const steps = [
@@ -51,11 +53,7 @@ const ReferralFlow = () => {
                 <div className="relative md:h-[300px] h-[600px]">
                     {/* Background Image Container */}
                     <div className="absolute inset-0">
-                        <img
-                            src="/flow-bg.png"
-                            alt=""
-                            className="w-full h-full object-contain scale-150 lg:scale-125 md:rotate-0 rotate-90 transition-transform duration-300"
-                        />
+                        <Image src="/flow-bg.png" alt="flowbg" layout="fill"  className="w-full h-full object-contain scale-150 lg:scale-125 md:rotate-0 rotate-90 transition-transform duration-300"/>
                     </div>
 
                     {/* Content Overlay */}

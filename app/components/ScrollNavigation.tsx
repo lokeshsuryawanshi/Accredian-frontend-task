@@ -4,7 +4,6 @@ import ReferralFlow from './heroComponents/ReferSection2';
 import ReferralBenefits from './heroComponents/BenefitsSection';
 import FAQComponent from './heroComponents/FaqSection';
 import CTABanner from './heroComponents/CTABanner';
-import Footer from './Footer';
 
 const ScrollNavigation = () => {
     const [activeTab, setActiveTab] = useState('refer');
