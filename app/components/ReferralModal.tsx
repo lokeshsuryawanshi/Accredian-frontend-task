@@ -37,9 +37,9 @@ const ReferralModal: React.FC<ReferralModalProps> = ({ onClose }) => {
     } else if (!/\S+@\S+\.\S+/.test(formData.referrerEmail)) {
       newErrors.referrerEmail = 'Enter a valid email';
     }
-    if (!formData.refereeName.trim()) newErrors.refereeName = "Friend's name is required";
+    if (!formData.refereeName.trim()) newErrors.refereeName = "Friend&apos;s name is required";
     if (!formData.refereeEmail.trim()) {
-      newErrors.refereeEmail = "Friend's email is required";
+      newErrors.refereeEmail = "Friend&apos;s email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.refereeEmail)) {
       newErrors.refereeEmail = 'Enter a valid email';
     }
@@ -62,7 +62,7 @@ const ReferralModal: React.FC<ReferralModalProps> = ({ onClose }) => {
     setSubmitting(true);
     try {
       // Call the Express API (adjust the URL if needed)
-      const response = await axios.post('http://localhost:5001/api/referral', formData);
+      await axios.post('http://localhost:5001/api/referral', formData);
       setSuccessMessage('Referral submitted successfully!');
       // Optionally, close the modal after a short delay
       setTimeout(() => {

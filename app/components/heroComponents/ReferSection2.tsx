@@ -1,7 +1,6 @@
 import React from 'react';
 import ReferButton from '../referbutton';
 import Image from 'next/image';
-import { Fullscreen } from 'lucide-react';
 
 const ReferralFlow = () => {
     const steps = [
